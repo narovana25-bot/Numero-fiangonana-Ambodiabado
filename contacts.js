@@ -1,4 +1,4 @@
-photoss contacts = [
+const contacts = [
     {
         nom: "Jovin Rapha",
         numero: "0349109320",
