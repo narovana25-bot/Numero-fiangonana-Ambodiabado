@@ -268,15 +268,156 @@ groupFilter.addEventListener("change", displayContacts);
 
 sort.addEventListener("change", displayContacts);
 
+<script src="contacts.js"></script>
+
+<script>
+
+const contactsContainer =
+    document.getElementById("contacts");
+
+const search =
+    document.getElementById("search");
+
+const groupFilter =
+    document.getElementById("groupFilter");
+
+const sort =
+    document.getElementById("sort");
+
+const totalContacts =
+    document.getElementById("totalContacts");
+
+
+function displayContacts() {
+
+    let result = [...contacts];
+
+    const searchText =
+        search.value.toLowerCase().trim();
+
+    const group =
+        groupFilter.value;
+
+
+    if (searchText !== "") {
+        result = result.filter(contact =>
+            contact.nom.toLowerCase().includes(searchText)
+        );
+    }
+
+
+    if (group !== "Tous") {
+        result = result.filter(contact =>
+            contact.groupe === group
+        );
+    }
+
+
+    result.sort((a, b) => {
+
+        return sort.value === "az"
+            ? a.nom.localeCompare(b.nom)
+            : b.nom.localeCompare(a.nom);
+
+    });
+
+
+    totalContacts.textContent = result.length;
+
+
+    if (result.length === 0) {
+
+        contactsContainer.innerHTML = `
+            <div class="empty">
+                <i class="fa-solid fa-user-slash"></i>
+                <h3>Tsy misy contact</h3>
+                <p>Tsy nahitana olona mifanaraka.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    contactsContainer.innerHTML = result.map(contact => {
+
+        const phone =
+            contact.numero.replace(/\s/g, "");
+
+        return `
+            <div class="card">
+
+                <img
+                    src="${contact.photo}"
+                    alt="${contact.nom}"
+                    class="photo"
+                >
+
+                <div class="info">
+
+                    <h2>${contact.nom}</h2>
+
+                    <div class="number">
+                        <i class="fa-solid fa-phone"></i>
+                        ${contact.numero}
+                    </div>
+
+                    <div class="group">
+                        <i class="fa-solid fa-users"></i>
+                        ${contact.groupe}
+                    </div>
+
+                    <div class="actions">
+
+                        <a href="tel:${phone}" class="action call">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+
+                        <a href="sms:${phone}" class="action sms">
+                            <i class="fa-solid fa-message"></i>
+                        </a>
+
+                        <a
+                            href="https://wa.me/261${phone.substring(1)}"
+                            target="_blank"
+                            class="action whatsapp"
+                        >
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+
+                        <a
+                            href="https://t.me/+261${phone.substring(1)}"
+                            target="_blank"
+                            class="action telegram"
+                        >
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+
+    }).join("");
+}
+
+
+search.addEventListener("input", displayContacts);
+
+groupFilter.addEventListener("change", displayContacts);
+
+sort.addEventListener("change", displayContacts);
+
 
 displayContacts();
 
-<script src="contacts.js"></script>
-<script>
-   // code...
 </script>
 
-</script>
+</body>
+</html>
+
 
 </body>
 </html>
