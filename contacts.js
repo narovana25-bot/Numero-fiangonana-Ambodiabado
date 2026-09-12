@@ -18,7 +18,7 @@ const contacts = [
         numero: "0382874632",
         photo:"./photos/Narovana.jpg",
         groupe: "Tojo"
-    }
+    },
     {
         nom: "Ndremanga",
         numero: "0349479436",
