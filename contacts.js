@@ -14,14 +14,10 @@ const contacts = [
     },
 
     {
-        nom: "Randria Tojo",
-        numero: "0339876543",
-        photo: "photos/tojo.jpg",
+        nom: "Narovana",
+        numero: "0382874632",
+        photo: "photos/Narovana.jpg",
         groupe: "Tojo"
     }
-    {
-    	nom: "Narovana",
-    	numero: "0382874632",
-    	
-    }
+    
 ];
