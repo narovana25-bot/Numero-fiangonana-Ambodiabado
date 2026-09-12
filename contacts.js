@@ -1,15 +1,15 @@
 photoss contacts = [
     {
-        nom: "Andry",
-        numero: "0341234567",
+        nom: "Jovin Rapha",
+        numero: "0349109320",
         photo: "photos/jean.jpg",
-        groupe: "Ndremanga"
+        groupe: "Samuel"
     },
 
     {
-        nom: "Rabe Marie",
-        numero: "0327654321",
-        photo: "photos/marie.jpg",
+        nom: "Nasandratra",
+        numero: "0383027725",
+        photo: "./photos/Nasandratra.jpg",
         groupe: "Ndretiana"
     },
 
@@ -18,6 +18,12 @@ photoss contacts = [
         numero: "0382874632",
         photo:"./photos/Narovana.jpg",
         groupe: "Tojo"
+    }
+    {
+        nom: "Ndremanga",
+        numero: "0349479436",
+        photo:"./photos/Ndremanga.jpg",
+        groupe: "Ndremanga"
     }
     
 ];
