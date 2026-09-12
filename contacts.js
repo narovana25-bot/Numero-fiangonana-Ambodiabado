@@ -7,23 +7,23 @@ const contacts = [
     },
 
     {
-        nom: "Nasandratra",
+        nom: "Nasandratrа",
         numero: "0383027725",
-        photo: "./photos/Nasandratra.jpg",
+        photo: "./photos/Nasandratrа.jpg",
         groupe: "Ndretiana"
     },
 
     {
         nom: "Narovana",
         numero: "0382874632",
-        photo:"./photos/Narovana.jpg",
+        photo: "./photos/Narovana.jpg",
         groupe: "Tojo"
     },
+
     {
         nom: "Ndremanga",
         numero: "0349479436",
-        photo:"./photos/Ndremanga.jpg",
+        photo: "./photos/Ndremanga.jpg",
         groupe: "Ndremanga"
     }
-    
 ];
