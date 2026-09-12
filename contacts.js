@@ -1,4 +1,4 @@
-const contacts = [
+photoss contacts = [
     {
         nom: "Andry",
         numero: "0341234567",
@@ -16,7 +16,7 @@ const contacts = [
     {
         nom: "Narovana",
         numero: "0382874632",
-        photo: "photos/Narovana.jpg",
+        photo:"./photos/Narovana.jpg",
         groupe: "Tojo"
     }
     
