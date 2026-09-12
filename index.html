@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Liste Numéro</title>
+    <title>Numéro rehetra - Fiangonana Ambodiadabo.</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -23,7 +23,7 @@
         </div>
 
         <div>
-            <h1>Liste Numéro</h1>
+            <h1>Numéro rehetra<br>Fiangonana Ambodiadabo.</h1>
             <p>Andiam-pitory</p>
         </div>
     </div>
@@ -35,6 +35,214 @@
 
 </header>
 
+
+<main class="container">
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Mitadiava anarana..."
+        >
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <select id="groupFilter">
+
+            <option value="Tous">👥 Andiam-pitory rehetra</option>
+
+            <option value="Ndremanga">Ndremanga</option>
+            <option value="Ndretiana">Ndretiana</option>
+            <option value="Tojo">Tojo</option>
+            <option value="Samuel">Samuel</option>
+            <option value="Johary">Johary</option>
+
+        </select>
+
+
+        <select id="sort">
+
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+
+        </select>
+
+        <select id="categoryFilter">
+            <option value="Tous">Rehetra</option>
+            <option value="Antipanahy">Antipanahy</option>
+            <option value="Mpikararaka fiangonana">Mpikararaka fiangonana</option>
+            <option value="Mpiandraikitra andiam-pitory">Mpiandraikitra andiam-pitory</option>
+                </select>
+
+    </div>
+
+
+    <!-- CONTACTS -->
+
+    <div id="contacts" class="contacts"></div>
+
+</main>
+
+<button id="backToTop" class="back-to-top" title="Miverina any ambony" aria-label="Miverina any ambony">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="contacts.js"></script>
+
+<script>
+const contactsContainer = document.getElementById("contacts");
+const search = document.getElementById("search");
+const groupFilter = document.getElementById("groupFilter");
+const sort = document.getElementById("sort");
+const categoryFilter = document.getElementById("categoryFilter");
+const totalContacts = document.getElementById("totalContacts");
+
+function saveContact(contact) {
+    const phone = String(contact.numero || "").replace(/\s/g, "");
+
+    if (!phone) {
+        alert("Mbola tsy tafiditra ny Numéro.");
+        return;
+    }
+
+    const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.nom}\nN:${contact.nom};;;;\nTEL;TYPE=CELL:${phone}\nNOTE:Andiam-pitory - ${contact.groupe}\nEND:VCARD`;
+    const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = contact.nom.replace(/[\\/:*?"<>|]/g, "_") + ".vcf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function displayContacts() {
+    let result = [...contacts];
+    const searchText = search.value.toLowerCase().trim();
+    const group = groupFilter.value;
+    const category = categoryFilter.value;
+
+    if (searchText !== "") {
+        result = result.filter(contact =>
+            contact.nom.toLowerCase().includes(searchText)
+        );
+    }
+
+    if (group !== "Tous") {
+        result = result.filter(contact => contact.groupe === group);
+    }
+
+    if (category !== "Tous") {
+        result = result.filter(contact => Array.isArray(contact.categorie)
+            ? contact.categorie.includes(category)
+            : contact.categorie === category);
+    }
+
+    result.sort((a, b) =>
+        sort.value === "az"
+            ? a.nom.localeCompare(b.nom)
+            : b.nom.localeCompare(a.nom)
+    );
+
+    totalContacts.textContent = result.length;
+
+    if (result.length === 0) {
+        contactsContainer.innerHTML = `
+            <div class="empty">
+                <i class="fa-solid fa-user-slash"></i>
+                <h3>Tsy misy contact</h3>
+                <p>Tsy nahitana olona mifanaraka.</p>
+            </div>
+        `;
+        return;
+    }
+
+    contactsContainer.innerHTML = result.map(contact => {
+        const phone = String(contact.numero || "").replace(/\s/g, "");
+        const hasPhone = phone !== "";
+        const international = hasPhone && phone.startsWith("0")
+            ? "261" + phone.substring(1)
+            : phone;
+
+        return `
+        <div class="card">
+            <img
+                src="${contact.photo}"
+                alt="${contact.nom}"
+                class="photo"
+                onerror="this.src='https://via.placeholder.com/150?text=Photo'"
+            >
+
+            <div class="info">
+                <div class="contact-top">
+                    <h2>${contact.nom}</h2>
+                    <button
+                        type="button"
+                        class="save-contact"
+                        title="Enregistrer le contact"
+                        ${hasPhone ? `onclick='saveContact(${JSON.stringify(contact)})'` : "disabled"}
+                    >
+                        <i class="fa-solid fa-download"></i>
+                        <span>Enregistrer</span>
+                    </button>
+                </div>
+
+                <div class="number ${hasPhone ? "" : "no-number"}">
+                    <i class="fa-solid fa-phone"></i>
+                    ${hasPhone ? contact.numero : "Mbola tsy tafiditra ny Numéro"}
+                </div>
+
+                <div class="group">
+                    <i class="fa-solid fa-users"></i>
+                    ${contact.groupe}
+                </div>
+
+                <div class="actions">
+                    <a href="${hasPhone ? `tel:${phone}` : "#"}" class="action call ${hasPhone ? "" : "disabled-action"}" title="Appeler">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+
+                    <a href="${hasPhone ? `sms:${phone}` : "#"}" class="action sms ${hasPhone ? "" : "disabled-action"}" title="SMS">
+                        <i class="fa-solid fa-message"></i>
+                    </a>
+
+                    <a href="${hasPhone ? `https://wa.me/${international}` : "#"}" target="_blank" class="action whatsapp ${hasPhone ? "" : "disabled-action"}" title="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                    <a href="${hasPhone ? `https://t.me/+${international}` : "#"}" target="_blank" class="action telegram ${hasPhone ? "" : "disabled-action"}" title="Telegram">
+                        <i class="fa-brands fa-telegram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        `;
+    }).join("");
+}
+
+search.addEventListener("input", displayContacts);
+groupFilter.addEventListener("change", displayContacts);
+sort.addEventListener("change", displayContacts);
+categoryFilter.addEventListener("change", displayContacts);
+
+displayContacts();
+</script>
+
+</body>
+</html>
 
 <main class="container">
 
