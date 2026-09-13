@@ -116,7 +116,7 @@ const contacts = [
     },
     {
         nom: "Natolotra",
-        numero: "",
+        numero: "0383362185",
         photo: "./photos/Natolotra.jpg",
         groupe: "Ndremanga",
         categorie: []
@@ -265,7 +265,7 @@ const contacts = [
     },
     {
         nom: "Salohy",
-        numero: "",
+        numero: "0342780444",
         photo: "./photos/Salohy.jpg",
         groupe: "Ndretiana",
         categorie: []
@@ -274,7 +274,7 @@ const contacts = [
         nom: "Faniry R.",
         numero: "0335439299",
         photo: "./photos/Faniry R..jpg",
-        groupe: "Ndretiana",
+        groupe: "Samuel",
         categorie: []
     },
     {
@@ -325,7 +325,7 @@ const contacts = [
         nom: "Faniry",
         numero: "0345029216",
         photo: "./photos/Faniry.jpg",
-        groupe: "Samuel",
+        groupe: "Tojo",
         categorie: []
     },
     {
@@ -470,6 +470,14 @@ const contacts = [
         groupe: "Johary",
         categorie: []
     },
+    {
+        nom: "Nirina",
+        numero: "0341094785",
+        photo: "./photos/Nirina.jpg",
+        groupe: "Johary",
+        categorie: []
+    },
+    
     {
         nom: "Francia",
         numero: "0340158780",

@@ -559,3 +559,72 @@ select {
         flex-shrink: 0;
     }
 }
+
+
+/* =========================
+   BOUTON MISE À JOUR
+   ========================= */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.update-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 10px 14px;
+    border-radius: 13px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, .30);
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    white-space: nowrap;
+}
+
+.update-button i {
+    font-size: 15px;
+}
+
+.update-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 24px rgba(37, 99, 235, .38);
+    filter: brightness(1.05);
+}
+
+.update-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 700px) {
+    .header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .update-button {
+        flex: 1;
+    }
+}
+
+@media (max-width: 420px) {
+    .update-button span {
+        display: inline;
+    }
+
+    .update-button {
+        font-size: 12px;
+        padding: 9px 11px;
+    }
+}

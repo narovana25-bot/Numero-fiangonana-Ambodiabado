@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1677ff">
+<title>Mise à jour — Numéro rehetra</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(145deg,#eef6ff 0%,#f7faff 52%,#eaf2ff 100%);
+    color:#172033;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+}
+.page{width:100%;max-width:560px}
+.back{
+    display:inline-flex;align-items:center;gap:7px;
+    color:#2563eb;text-decoration:none;font-weight:700;
+    font-size:14px;margin-bottom:14px;padding:8px 2px;
+}
+.card{
+    background:rgba(255,255,255,.94);
+    border:1px solid rgba(37,99,235,.10);
+    border-radius:28px;
+    padding:25px;
+    box-shadow:0 20px 60px rgba(15,40,80,.13);
+    text-align:center;
+}
+.logo-wrap{
+    width:220px;height:220px;margin:0 auto 18px;
+    border-radius:30px;overflow:hidden;
+    box-shadow:0 18px 38px rgba(37,99,235,.20);
+    background:#1677ff;
+}
+.logo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+h1{font-size:27px;margin:6px 0 8px;color:#14213d}
+.subtitle{color:#64748b;font-size:14px;line-height:1.5;margin-bottom:20px}
+.version{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    background:#eff6ff;color:#2563eb;border-radius:14px;
+    padding:11px 14px;margin:0 auto 18px;max-width:330px;
+    font-size:13px;font-weight:700;
+}
+.download{
+    width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+    border:0;border-radius:16px;padding:15px 18px;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#fff;text-decoration:none;font-size:16px;font-weight:800;
+    box-shadow:0 10px 24px rgba(37,99,235,.28);
+    transition:.18s ease;
+}
+.download:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(37,99,235,.35)}
+.download:active{transform:translateY(0)}
+.note{margin-top:13px;color:#94a3b8;font-size:12px;line-height:1.5}
+@media(max-width:420px){
+    body{padding:14px}.card{padding:20px;border-radius:24px}
+    .logo-wrap{width:190px;height:190px}
+    h1{font-size:24px}
+}
+</style>
+</head>
+<body>
+<main class="page">
+    <a class="back" href="index.html">← Retour au site</a>
+
+    <section class="card">
+        <div class="logo-wrap">
+            <img src="logo-mise-a-jour.png" alt="Logo Numéro rehetra">
+        </div>
+
+        <h1>Haka mise à jour</h1>
+        <p class="subtitle">
+            Sintomy eto ny kinova farany amin'ny application
+            <strong>Numéro rehetra</strong>.
+        </p>
+
+        <div class="version">
+            <span>📅</span>
+            <span>Mise à jour : 13 Septambra 2026</span>
+        </div>
+
+        <!-- Apetraho eo akaikin'ity site ity ny APK ary tazomy ity anarana ity. -->
+        <a class="download" href="Num-Rehetra.apk" download>
+            <span>⬇</span>
+            <span>Télécharger l'APK</span>
+        </a>
+
+        <p class="note">
+            Rehefa vita ny téléchargement dia sokafy ilay fichier .apk
+            mba hametrahana ny mise à jour.
+        </p>
+    </section>
+</main>
+</body>
+</html>
